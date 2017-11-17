@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: eureka
+
+eureka:
+  instance:
+    lease-renewal-interval-in-seconds: 2
+    lease-expiration-duration-in-seconds: 6
+    prefer-ip-address: false
+server:
+  port: 8761

@@ -12,6 +12,14 @@ eureka:
 
 ---
 spring:
+  profiles: dev
+eureka:
+  client:
+    service-url:
+      defaultZone: http://172.16.99.128:8761/eureka/
+
+---
+spring:
   profiles: dt
 eureka:
   client:

@@ -7,14 +7,20 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
 
+<script>
+    $("#inputForm").submit(function(event){
+        alert( "Handler for .submit() called.");
+        event.preventDefault();
+    });
+</script>
 <body>
     <div class="container">
-        <form class="form-signin">
+        <form id="inputForm" class="form-signin" action="login">
             <h2 class="form-signin-heading">Please sign in</h2>
-            <label for="inputEmail" class="sr-only">Email address</label>
-            <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required="" autofocus="">
-            <label for="inputPassword" class="sr-only">Password</label>
-            <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="">
+            <label for="loginName" class="sr-only">Login name</label>
+            <input type="text" id="loginName" class="form-control" placeholder="Login name" required="" autofocus="">
+            <label for="password" class="sr-only">Password</label>
+            <input type="password" id="password" class="form-control" placeholder="Password" required="">
             <div class="checkbox">
                 <label>
                     <input type="checkbox" value="remember-me"> Remember me

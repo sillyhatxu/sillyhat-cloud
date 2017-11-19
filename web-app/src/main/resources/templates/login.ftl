@@ -8,14 +8,34 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
 
 <script>
-    $("#inputForm").submit(function(event){
-        alert( "Handler for .submit() called.");
-        event.preventDefault();
-    });
+    function login() {
+        var data ={
+            loginName : $("#loginName").val(),
+            password : $("#password").val(),
+        };
+        fetch('${ctx}/check_login/' + $("#loginName").val() + '/pd/' + $("#password").val(), {
+            method: 'get'
+        });
+
+        <#--$.ajax({-->
+            <#--type:"POST",-->
+            <#--url: "${ctx}/login",-->
+            <#--dataType:"json",-->
+            <#--async:false,-->
+            <#--data: data,-->
+            <#--success: function(json){-->
+                <#--if(json.data.flag){-->
+                    <#--window.location.href="${ctx}/index";-->
+                <#--}else{-->
+                    <#--alert("用户名或密码错误，请重新输入");-->
+                <#--}-->
+            <#--}-->
+        <#--});-->
+    }
 </script>
 <body>
     <div class="container">
-        <form id="inputForm" class="form-signin" action="login">
+        <form id="inputForm" class="form-signin">
             <h2 class="form-signin-heading">Please sign in</h2>
             <label for="loginName" class="sr-only">Login name</label>
             <input type="text" id="loginName" class="form-control" placeholder="Login name" required="" autofocus="">
@@ -23,10 +43,11 @@
             <input type="password" id="password" class="form-control" placeholder="Password" required="">
             <div class="checkbox">
                 <label>
+                    <#--Time: ${time?datetime_format}-->
                     <input type="checkbox" value="remember-me"> Remember me
                 </label>
             </div>
-            <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+            <button id="btnLogin" class="btn btn-lg btn-primary btn-block" type="button" onclick="login()">Sign in</button>
         </form>
     </div>
 </html>

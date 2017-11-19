@@ -12,6 +12,6 @@ public class EurekaApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(EurekaApplication.class, args);
-		log.info(".......................Start Server Finish.......................");
+		log.info(".......................Start Eureka Server Finish.......................");
 	}
 }

@@ -1,0 +1,28 @@
+server:
+  port: 8080
+zuul:
+#  prefix: /api/v6/
+#  stripPrefix: true
+  routes:
+    ignoredServices: "*"
+    customer:
+      path: /customer/**
+      serviceId: customer
+    web-app:
+      path: /web_app/**
+      serviceId: web-app
+  ribbon-isolation-strategy: thread
+  host:
+    connect-timeout-millis: 5000
+    socket-timeout-millis:  10000
+ribbon:
+  eager-load:
+    enabled: true
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 10000

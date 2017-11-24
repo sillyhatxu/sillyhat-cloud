@@ -43,8 +43,8 @@ public class WelcomeController {
     }
 
     @GetMapping(value = "/check_login/{loginName}/pd/{password}")
-    public String check_login(
-            @PathVariable(value = "loginName") Long loginName,
+    public String check_login(Map<String, Object> model,
+            @PathVariable(value = "loginName") String loginName,
             @PathVariable(value = "password") String password) {
         return "login_error";
     }

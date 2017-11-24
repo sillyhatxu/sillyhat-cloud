@@ -1,0 +1,121 @@
+version: "3"
+services:
+
+  auth:
+    build: ./auth
+    image: "111909622691.dkr.ecr.ap-southeast-1.amazonaws.com/auth:latest"
+    deploy:
+      replicas: 1
+
+  cashback:
+    build: ./cashback
+    image: "111909622691.dkr.ecr.ap-southeast-1.amazonaws.com/cashback:$TAG"
+    deploy:
+      replicas: 1
+
+  eureka:
+    build: ./eureka
+    image: "111909622691.dkr.ecr.ap-southeast-1.amazonaws.com/eureka:$TAG"
+    ports:
+      - 8761:8761
+    deploy:
+      replicas: 1
+
+  inventory:
+    build: ./inventory
+    image: "111909622691.dkr.ecr.ap-southeast-1.amazonaws.com/inventory:$TAG"
+    deploy:
+      replicas: 1
+
+  shop:
+    build: ./shop
+    image: "111909622691.dkr.ecr.ap-southeast-1.amazonaws.com/shop:$TAG"
+    deploy:
+      replicas: 1
+
+  order:
+    build: ./order
+    image: "111909622691.dkr.ecr.ap-southeast-1.amazonaws.com/order:$TAG"
+    deploy:
+      replicas: 1
+
+  payment:
+    build: ./payment
+    image: "111909622691.dkr.ecr.ap-southeast-1.amazonaws.com/payment:$TAG"
+    deploy:
+      replicas: 1
+
+  scheduler:
+    build: ./scheduler
+    image: "111909622691.dkr.ecr.ap-southeast-1.amazonaws.com/scheduler:$TAG"
+    deploy:
+      replicas: 1
+
+  shopping-bag:
+    build: ./shopping-bag
+    image: "111909622691.dkr.ecr.ap-southeast-1.amazonaws.com/shopping-bag:$TAG"
+    deploy:
+      replicas: 1
+
+  customer:
+    build: ./customer
+    image: "111909622691.dkr.ecr.ap-southeast-1.amazonaws.com/customer:$TAG"
+    deploy:
+      replicas: 1
+
+  invoice:
+      build: ./invoice
+      image: "111909622691.dkr.ecr.ap-southeast-1.amazonaws.com/invoice:$TAG"
+      deploy:
+        replicas: 1
+
+  id-generator:
+    build: ./id-generator
+    image: "111909622691.dkr.ecr.ap-southeast-1.amazonaws.com/id-generator:$TAG"
+    deploy:
+      replicas: 1
+
+  message:
+      build: ./message
+      image: "111909622691.dkr.ecr.ap-southeast-1.amazonaws.com/message:$TAG"
+      deploy:
+        replicas: 1
+
+  favourite:
+      build: ./favourite
+      image: "111909622691.dkr.ecr.ap-southeast-1.amazonaws.com/favourite:$TAG"
+      deploy:
+        replicas: 1
+
+  wardrobe:
+      build: ./wardrobe
+      image: "111909622691.dkr.ecr.ap-southeast-1.amazonaws.com/wardrobe:$TAG"
+      deploy:
+        replicas: 1
+
+  stripe:
+      build: ./stripe
+      image: "111909622691.dkr.ecr.ap-southeast-1.amazonaws.com/stripe:$TAG"
+      deploy:
+        replicas: 1
+
+  app-config:
+      build: ./app-config
+      image: "111909622691.dkr.ecr.ap-southeast-1.amazonaws.com/app-config:$TAG"
+      deploy:
+        replicas: 1
+
+  legacy-db:
+      build: ./legacy-db
+      image: "111909622691.dkr.ecr.ap-southeast-1.amazonaws.com/legacy-db:$TAG"
+      deploy:
+        replicas: 1
+
+  zuul:
+    build: ./zuul
+    image: "111909622691.dkr.ecr.ap-southeast-1.amazonaws.com/zuul:$TAG"
+    deploy:
+      replicas: 1
+    ports:
+      - 8080:8080
+

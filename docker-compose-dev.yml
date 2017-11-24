@@ -9,6 +9,14 @@ services:
     deploy:
       replicas: 1
 
+  zuul:
+    build: ./zuul
+    image: "xushikuan/sillyhat.cloud.zuul:master"
+    deploy:
+      replicas: 1
+    ports:
+      - 8080:8080
+
   customer:
     build: ./customer
     image: "xushikuan/sillyhat.cloud.customer:master"

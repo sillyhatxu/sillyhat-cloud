@@ -13,8 +13,9 @@
             loginName : $("#loginName").val(),
             password : $("#password").val(),
         };
-        fetch('${ctx}/check_login/' + $("#loginName").val() + '/pd/' + $("#password").val(), {
-            method: 'get'
+
+        fetch('${ctx}/check_login/user/pd/1').then(function(res) {
+            window.location.href
         });
 
         <#--$.ajax({-->

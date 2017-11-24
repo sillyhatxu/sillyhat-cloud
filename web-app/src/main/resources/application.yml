@@ -11,4 +11,4 @@ feign:
         #errorDecoder: com.example.SimpleErrorDecoder
         #retryer: com.example.SimpleRetryer
         requestInterceptors:
-          - com.sillyhat.cloud.webapp.config.TokenInterceptorBackups
+          - com.sillyhat.cloud.webapp.config.TokenInterceptor

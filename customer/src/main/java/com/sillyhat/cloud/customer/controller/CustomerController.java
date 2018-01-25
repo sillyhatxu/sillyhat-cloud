@@ -1,7 +1,7 @@
 package com.sillyhat.cloud.customer.controller;
 
 
-import com.sillyhat.cloud.customer.domain.Customer;
+import com.sillyhat.cloud.customer.model.Customer;
 import com.sillyhat.cloud.customer.repository.CustomerRepository;
 import com.sillyhat.cloud.customer.service.CustomerService;
 import lombok.AllArgsConstructor;

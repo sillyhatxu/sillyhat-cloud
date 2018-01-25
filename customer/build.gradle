@@ -42,6 +42,7 @@ dependencies {
 	compile group: 'org.flywaydb', name: 'flyway-core', version: '4.2.0'
 //	runtime('mysql:mysql-connector-java')
 	runtime('com.h2database:h2')
+	testCompile group: 'org.spockframework', name: 'spock-core', version: '1.1-groovy-2.4'
 }
 
 dependencyManagement {

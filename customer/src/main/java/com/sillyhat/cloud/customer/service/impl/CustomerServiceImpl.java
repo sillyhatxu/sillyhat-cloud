@@ -1,6 +1,6 @@
 package com.sillyhat.cloud.customer.service.impl;
 
-import com.sillyhat.cloud.customer.domain.Customer;
+import com.sillyhat.cloud.customer.model.Customer;
 import com.sillyhat.cloud.customer.repository.CustomerRepository;
 import com.sillyhat.cloud.customer.service.CustomerService;
 import lombok.AllArgsConstructor;
@@ -16,6 +16,7 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public List<Customer> queryAllCustomerList() {
-        return customerRepository.findAll();
+        List<Customer> customerList = customerRepository.findAll();
+        return  customerList;
     }
 }

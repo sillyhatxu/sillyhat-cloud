@@ -4,6 +4,7 @@ logging:
   file: ./log/customer.log
   pattern:
     console: "%date{yyyy-MM-dd HH:mm:ss.SSS} -%5level [customer][%15.15thread] %-40.40logger{39} [%6line]: %msg%n"
+    file: "%date{yyyy-MM-dd HH:mm:ss.SSS} -%5level [customer][%15.15thread] %-40.40logger{39} [%6line]: %msg%n"
 spring:
   h2:
     console:

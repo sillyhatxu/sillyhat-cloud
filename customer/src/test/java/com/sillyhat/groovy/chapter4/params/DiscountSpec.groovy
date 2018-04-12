@@ -4,9 +4,11 @@ import com.sillyhat.groovy.chapter4.params.dto.Customer
 import com.sillyhat.groovy.chapter4.params.dto.Discount
 import com.sillyhat.groovy.chapter4.params.dto.Order
 import com.sillyhat.groovy.chapter4.params.dto.Product
+import spock.lang.Unroll
 
 class DiscountSpec extends spock.lang.Specification{
 
+	@Unroll
 	def "Discount estimation for the eshop"() {
 		given: "a product, a customer and an order"
 		Product product = new Product()

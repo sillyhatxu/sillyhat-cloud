@@ -28,7 +28,7 @@ class UnrollDiscountSpec extends spock.lang.Specification{
 			bonusPoints = points
 		}
 		currentOrder.totalPrice = order
-		
+
 		expect: "the proper discount"
 		checkout.calculateDiscountPercentFor(product, currentOrder) == finalDiscount
 

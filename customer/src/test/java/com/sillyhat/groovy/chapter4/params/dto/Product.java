@@ -1,5 +1,8 @@
 package com.sillyhat.groovy.chapter4.params.dto;
 
+import lombok.Data;
+
+@Data
 public class Product {
 
 	private boolean dailyDeal;

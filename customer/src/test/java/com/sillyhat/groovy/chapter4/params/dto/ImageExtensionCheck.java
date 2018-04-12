@@ -1,5 +1,8 @@
 package com.sillyhat.groovy.chapter4.params.dto;
 
+import lombok.Data;
+
+@Data
 public class ImageExtensionCheck {
 	private boolean result = false;
 	private String errorCode ="";

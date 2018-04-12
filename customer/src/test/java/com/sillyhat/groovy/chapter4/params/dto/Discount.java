@@ -1,5 +1,8 @@
 package com.sillyhat.groovy.chapter4.params.dto;
 
+import lombok.Data;
+
+@Data
 public class Discount {
 	private final Customer customer;
 

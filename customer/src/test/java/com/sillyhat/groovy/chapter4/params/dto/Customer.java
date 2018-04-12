@@ -1,5 +1,8 @@
 package com.sillyhat.groovy.chapter4.params.dto;
 
+import lombok.Data;
+
+@Data
 public class Customer {
 	private boolean vip = false;
 

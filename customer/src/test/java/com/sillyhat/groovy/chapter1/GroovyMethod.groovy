@@ -8,7 +8,7 @@ def createMilitaryName(def firstName,def lastName,def rank){
     return "$lastName,$firstName,($rank)"
 }
 
-def fullName = createName "Shikuan", "Xu"
+def fullName = createNam( "Shikuan", "Xu")
 println fullName
 
 def militaryName = createMilitaryName "Shikuan", "Xu", "Heihei"

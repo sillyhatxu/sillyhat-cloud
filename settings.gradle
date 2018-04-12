@@ -3,3 +3,6 @@ include('eureka')
 include('zuul')
 include('customer')
 include('web-app')
+include('groovy-test')
+include('statemachine')
+

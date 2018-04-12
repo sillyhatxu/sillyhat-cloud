@@ -5,7 +5,6 @@ import com.sillyhat.groovy.chapter1.obj.Person
 import java.util.regex.Pattern
 //This script should run without errors because all asserts evaluate to true
 
-
 assert true
 assert !false
 
@@ -23,6 +22,9 @@ assert !empty
 
 Person person = new Person()
 assert person;
+
+Person person1 = null
+assert !person1;
 
 Person nullReference = null
 assert !nullReference;
@@ -57,13 +59,15 @@ println "Script has finished because all asserts pass"
  * Fun with Groovy truth 
  * 
  * This is valid Groovy code: boolean flag = -45. 
- * Even though this line does not even compile in Java, 
+ * Even though this line does not even compile in Java,
  * in Groovy the number -45 is a non-zero number and therefore 
  * the variable flag is now true. Isn't that fun?
  */
 boolean flag = -42
 assert flag
 
+boolean flagTwo = 0
+assert !flagTwo
 
 
 

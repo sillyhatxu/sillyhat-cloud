@@ -1,6 +1,6 @@
 # Spock 学习笔记
 
-* [Java Testing with Spock](https://github.com/kkapelon/java-testing-with-spock) - 源码
+* [Java Testing with Spock](https://github.com/kkapelon/java-testing-with-spock) - 笔记源码
 
 ## 1、基础语法
 
@@ -154,9 +154,9 @@ test:com.sillyhat.groovy.chapter3.structure.HamcrestMatchersSpec
 分组测试，测试代码过长，使代码可读性变差。alt > grouping > old
 test:com.sillyhat.groovy.chapter3.structure.GroupingAssertionsSpec
 ````
-## Where
+## 4、Where
 
-### 5.1 SimpleTabularSpec
+### 4.1 SimpleTabularSpec
 ````
 参数测试
 |   表示一列
@@ -167,42 +167,145 @@ Groovy is an optionally typed language；不需要声明参数类型
 test:com.sillyhat.groovy.chapter4.params.SimpleTabularSpec
 ````
 
-### 5.2 ImageNameValidatorSpec
+### 4.2 ImageNameValidatorSpec
 ````
 test:com.sillyhat.groovy.chapter4.params.ImageNameValidatorSpec
 ````
 
-### 5.2 SingleColumnSpec
+### 4.2 SingleColumnSpec
 ````
 Spock数据表的另一个角落案例是它们必须至少有两列。 如果您正在编写一个只有一个参数的测试，则必须在第二列中使用“填充符”
 eg: "screenshot.bmp" || _
 test:com.sillyhat.groovy.chapter4.params.SingleColumnSpec
 ````
 
-### 5.3 LifecycleDataSpec
+### 4.3 LifecycleDataSpec
 ````
 where 声明周期
 test:com.sillyhat.groovy.chapter4.lifecycle.LifecycleDataSpec
 ````
 
-### 5.4 UnrollDataSpec
+### 4.4 UnrollDataSpec
 ````
 @Unroll 清晰的指出多次测试结果
 test:com.sillyhat.groovy.chapter4.lifecycle.UnrollDataSpec
 ````
 
-### 5.5 UnrollDiscountSpec
+### 4.5 UnrollDiscountSpec
 ````
 @Unroll 可以标记在class上
 test:com.sillyhat.groovy.chapter4.lifecycle.UnrollDiscountSpec
 ````
 
+### 4.6 BasicPipesSpec
+````
+data pipes  
+区间  20-80 (20..80)
+test:com.sillyhat.groovy.chapter4.pipes.BasicPipesSpec
+````
 
+### 4.7 BasicPipesSpec
+````
+test:com.sillyhat.groovy.chapter4.pipes.DerivedValuesSpec
+````
 
-### 2.1 TestCustomer
-不连接数据库，直接返回查询结果
-test:com.sillyhat.groovy.chapter2.customer.TestCustomer
+### 4.8 BasicPipesSpec
+````
+test:com.sillyhat.groovy.chapter4.pipes.FileReadingSpec
+````
 
+## 5、Stub and Mock
+
+### 5.1 StubsInStubsSpec
+````
+当测试的Method内部需要使用其他接口时，可以预定义其调用接口的返回值
+test:com.sillyhat.groovy.chapter5.stubs.StubsInStubsSpec
+````
+
+### 5.2 SimpleStubbingSpec
+````
+ >>定义返回结果，和指定参数返回结果
+test:com.sillyhat.groovy.chapter5.stubs.SimpleStubbingSpec
+````
+
+### 5.3 SequenceStubbingSpec
+````
+>>> 定义第一次查询返回结果，第二次查询返回结果，以此类推
+test:com.sillyhat.groovy.chapter5.stubs.SequenceStubbingSpec
+````
+
+### 5.4 ArgumentStubbingSpec
+````
+不论传入参数为什么，都返回指定结果
+test:com.sillyhat.groovy.chapter5.stubs.ArgumentStubbingSpec
+````
+
+### 5.5 ExceptionStubbingSpec
+````
+异常处理
+test:com.sillyhat.groovy.chapter5.stubs.ExceptionStubbingSpec
+````
+
+### 5.6 DynamicStubbingSpec
+````
+汇总
+test:com.sillyhat.groovy.chapter5.stubs.DynamicStubbingSpec
+````
+
+### 5.7 OrderMockingSpec
+````
+调用mock数据的接口存在顺序，并且需要验证调用次数
+eg:
+1 * creditCardSevice.sale( _, _)   先调用了 1 次creditCardSevice.sale
+1 * creditCardSevice.shutdown()    再调用了 1 次creditCardSevice.shutdown
+test:com.sillyhat.groovy.chapter5.mocks.OrderMockingSpec
+````
+
+### 5.8 CardinalityMockingSpec
+````
+0 * inventory._   inventory的其他方法都是零次调用
+0 * _             类的其他方法被调用零次
+_ * inventory.isEmpty() >> false   isEmpty 可以被调用任意次数，但是一定返回false
+eg:
+1 * creditCardSevice.sale( _, _)   先调用了 1 次creditCardSevice.sale
+1 * creditCardSevice.shutdown()    再调用了 1 次creditCardSevice.shutdown
+test:com.sillyhat.groovy.chapter5.mocks.OrderMockingSpec
+````
+
+### 5.9 ArgumentTypeVerificationSpec
+````
+2 * inventory.isProductAvailable(!null ,1) >> true   isProductAvailable被调用两次，并且当第一个参数非空，第二个参数为1是，返回true
+test:com.sillyhat.groovy.chapter5.mocks.ArgumentTypeVerificationSpec
+````
+
+### 5.10 ComplexMockingSpec
+````
+1 * creditCardSevice.authorize(1550, customer) >>  CreditCardResult.NOT_ENOUGH_FUNDS     
+creditCardSevice.authorize被调用1次并且当第一个参数是1550，第二个参数是customer对象时，返回CreditCardResult.NOT_ENOUGH_FUNDS
+test:com.sillyhat.groovy.chapter5.mocks.ComplexMockingSpec
+````
+
+### 5.11 ArgumentVerificationSpec
+````
+1 * creditCardSevice.sale({amount -> amount == basket.findOrderPrice()}, { client -> client.vip == false})   
+creditCardSevice.sale 被调用1次，并且第一个参数是basket.findOrderPrice()的返回值，第二个参数是一个有vip字段的对象，并且vip是false
+test:com.sillyhat.groovy.chapter5.mocks.ArgumentVerificationSpec
+````
+
+## 6、Page And Rest Client
+### 6.1 GroovyRestClientSpec
+````
+1 * creditCardSevice.sale({amount -> amount == basket.findOrderPrice()}, { client -> client.vip == false})   
+creditCardSevice.sale 被调用1次，并且第一个参数是basket.findOrderPrice()的返回值，第二个参数是一个有vip字段的对象，并且vip是false
+test:com.sillyhat.groovy.chapter5.mocks.ArgumentVerificationSpec
+````
+
+数据表
+数据管道
+## 7、Jenkins Test
+````
+./gradlew groovy-test:test
+````
 
 ````
 Chapter 1 
@@ -255,4 +358,14 @@ one of the huge changes that set it apart from its competitors.
 If you’ve already worked with Mockito, 
 you’ll truly appreciate the simplicity of Spock mocking. 
 Again, depending on your application, you may need mocking in a few special cases or in all your unit tests.
+
+Chapter 7 examines the use of Spock in the full testing lifecycle of an enterprise application. 
+Spock can cover trivial plain unit tests, larger integration tests, and even functional tests. 
+Several examples (mostly with Spring) show that Spock allows you to reuse your favorite Java testing tools with zero additional effort. 
+At the same time, Spock can employ Groovy testing libraries, which may be more appropriate in your specific application.
+
+Chapter 8 builds upon the knowledge of all previous chapters by describing corner cases that need special attention 
+in your Enterprise Spock tests. It describes several additional Spock annotations that enable/disable the running of 
+a test in a static or dynamic way and then shows you how to refactor large Spock tests with helper methods. 
+The chapter finishes with a demonstration of Spock spies, a feature that I explicitly advise you not to use.
 ````

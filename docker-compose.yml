@@ -3,7 +3,7 @@ services:
 
   eureka:
     build: ./eureka
-    image: "xushikuan/sillyhat.cloud.eureka:master"
+    image: "xushikuan/sillyhat.cloud.eureka:latest"
     ports:
       - 8761:8761
     deploy:
@@ -11,7 +11,7 @@ services:
 
   zuul:
     build: ./zuul
-    image: "xushikuan/sillyhat.cloud.zuul:master"
+    image: "xushikuan/sillyhat.cloud.zuul:latest"
     deploy:
       replicas: 1
     ports:
@@ -19,6 +19,6 @@ services:
 
   customer:
     build: ./customer
-    image: "xushikuan/sillyhat.cloud.customer:master"
+    image: "xushikuan/sillyhat.cloud.customer:latest"
     deploy:
       replicas: 1

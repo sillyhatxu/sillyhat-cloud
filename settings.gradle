@@ -1,4 +1,5 @@
 rootProject.name = 'sillyhat-cloud'
+include('common')
 include('eureka')
 include('zuul')
 include('customer')

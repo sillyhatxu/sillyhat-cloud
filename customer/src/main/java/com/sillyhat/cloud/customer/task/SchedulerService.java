@@ -17,6 +17,14 @@ public class SchedulerService {
 
     private static SimpleDateFormat sdfTime = new SimpleDateFormat( "yyyyMMddHHmmss");
 
+    private static SimpleDateFormat sdfDate = new SimpleDateFormat( "yyyyMMdd");
+
+    @Scheduled(cron="0/3 * * * * ? ")
+    public void scheduleTestInfoLog2(){
+        log.info("xushikuan la la la: {}",sdfDate.format(new Date()));
+    }
+
+
     @Scheduled(cron="0/2 * * * * ? ")
     public void scheduleTestInfoLog(){
         log.info("schedule test info log. time : {}",sdfTime.format(new Date()));

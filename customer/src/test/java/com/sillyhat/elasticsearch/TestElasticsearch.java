@@ -37,7 +37,7 @@ public class TestElasticsearch {
         jsonMap.put("current_price", 4850);
         jsonMap.put("is_purchasable", true);
         jsonMap.put("last_modified_date", new Date());
-        IndexRequest indexRequest = new IndexRequest("deja_products", "tags", "5404175");
+        IndexRequest indexRequest = new IndexRequest("product", "tags", "5404175");
         indexRequest.source(jsonMap);
         indexRequest.opType(DocWriteRequest.OpType.CREATE);
 //        indexRequest.opType(DocWriteRequest.OpType.UPDATE);

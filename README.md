@@ -119,6 +119,7 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 
 ```
+./gradlew assemble
 docker-compose -f docker-compose.yml build --no-cache
 docker-compose -f docker-compose.yml push
 ```

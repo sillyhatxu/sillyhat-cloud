@@ -20,7 +20,7 @@ public class DBUtils {
 			String user = "root";
 //			String user = "deja_read_portal";
 			String password = "mozat2014";
-			String url = "jdbc:mysql://deja-di.ccf2gesv8s9h.ap-southeast-1.rds.amazonaws.com:3306";
+			String url = "jdbc:mysql://deja-di.ccf2gesv8s9h.ap-southeast-1.rds.amazonaws.com:3306?useSSL=false";
 //			String url = "jdbc:mysql://deja-di.ccf2gesv8s9h.ap-southeast-1.rds.amazonaws.com:3306?"
 //					+ "user=deja_read_portal&password=mozat2014";
 			Class.forName("com.mysql.jdbc.Driver");
@@ -57,8 +57,15 @@ public class DBUtils {
 		}
 	}
 	public static void main(String args[]){
-		Connection con = DBUtils.getConnection();
-		System.out.println(con);
+		for (int i = 0; i < 50; i++) {
+			Connection con = DBUtils.getConnection();
+			System.out.println(con);
+			try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
 	}
 	
 }
